@@ -37,12 +37,14 @@ var answer;
 /*--------------------------------------------------Function Definations and Calling Part ----------------------------------------------*/
 
 /*-------------Hide Button and Show button on Radio Check//Start---------------------*/
-$("#button-submit").hide();
-$(".radiogroup").click(function () {
-  if ($("input[name=answer]:checked").length) {
-    $("#button-submit").show();
-  }
-});
+function submitHide() {
+  $("#button-submit").hide();
+  $(".radiogroup").click(function () {
+    if ($("input[name=answer]:checked").val()) {
+      $("#button-submit").show();
+    }
+  });
+}
 /*--------------END--------------------*/
 
 /*--------------Start quiz first page when app launch-----*/
@@ -50,6 +52,7 @@ function startQuiz() {
   $("main").on("click", "#button-start", function (event) {
     $(".start-quiz").hide();
     LoadQuestion();
+    submitHide();
   });
 }
 /*--------------END-----*/
@@ -77,10 +80,11 @@ function LoadQuestion() {
       return `<label for="${answerValue}"><input class="myradio" type="radio" id="${answerValue}" name="answer" tabindex="${answerIndex}" value="${answerValue}" aria-checked="false" required>${answerValue}</label><br>`;
     });
     let button = $(
-      `<button type="submit" id ="button-submit">Submit</button></form>`
+      `<button type="submit" id ="button-submit">Next</button></form>`
     );
     $(".quiz").append(question);
     $(".radiogroup").append(answers, button);
+    submitHide();
     nextQuestion();
   } else {
     displayResults();
