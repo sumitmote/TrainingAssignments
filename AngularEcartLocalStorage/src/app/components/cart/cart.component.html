@@ -1,0 +1,70 @@
+<ng-container *ngIf="true">
+  <div class="container border border-solid border-dark bg-info">
+    <strong><b>CART</b></strong>
+  </div>
+  <div class="container border border-solid border-dark">
+    <table
+      class="
+        container
+        table table-striped table-bordered table-hover
+        border border-solid border-dark
+        bg-info
+      "
+    >
+      <thead>
+        <tr>
+          <th scope="col">Sr.no</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Product Detail</th>
+          <th scope="col">Product Image</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Product Price</th>
+          <th scope="col">Total</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of cartItem; let i = index">
+          <td>{{ item.pname }}</td>
+          <td>{{ item.pname }}</td>
+          <td>{{ item.pname }}</td>
+          <td>
+            <img
+              src="../../../assets/oneplus.png"
+              height="150"
+              width="150"
+              alt="No Image"
+            />
+          </td>
+          <td>{{ item.pquantity }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.total }}</td>
+          <td>
+            <button
+              (click)="deletefrmCart(item, i)"
+              class="btn btn-danger m-3 badge bg-danger p-3"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4"></td>
+
+          <td>
+            <button (click)="emptycart()" class="btn btn-danger">
+              Clear Cart
+            </button>
+          </td>
+          <td><button class="btn btn-success">Payment</button></td>
+          <td *ngIf="cartItem">
+            <strong>Grand Total : {{ grandTotal }} </strong>
+          </td>
+        </tr>
+      </tbody>
+
+      <pre></pre>
+    </table>
+  </div>
+</ng-container>

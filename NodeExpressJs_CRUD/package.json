@@ -1,0 +1,20 @@
+{
+  "name": "nodeexpressjs_crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "usercrud.js",
+  "type": "module",
+  "scripts": {
+    "nodemon": "nodemon usercrud.js"  
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "nodemon": "^2.0.12"
+  }
+}

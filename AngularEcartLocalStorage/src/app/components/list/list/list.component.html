@@ -1,0 +1,42 @@
+<div *ngIf="true" class="bg-info">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Details</th>
+        <th>Image</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of products">
+        <td>{{ item.pname }}</td>
+        <td>{{ item.pdetails }}</td>
+        <td>
+          <img
+            src="../../../../assets/oneplus.png"
+            alt="NO IMAGE"
+            width="200"
+            height="200"
+          />
+        </td>
+        <td>{{ item.pquantity }}</td>
+        <td>{{ item.price }}</td>
+        <td>
+          <!-- <button class="btn btn-info" (click)="LoadData(item)">Update</button> -->
+          <button class="btn btn-warning" (click)="addToCart(item)">
+            AddtoCart
+          </button>
+          <button class="btn btn-danger" (click)="Delete(item.pname)">
+            Delete
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="products.length == 0">
+        <td colspan="6" class="text-center">No records found</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
