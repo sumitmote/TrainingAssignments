@@ -1,0 +1,29 @@
+const handleAddProducts=(e)=>{
+    e.preventDefault();
+    const uploadTask=storage.ref(`product-images/${image.name}`).put(image);
+    uploadTask.on('state_changed',(snapshot)=>{
+        const percent = (snapshot.bytesTransferred/snapshot.totalBytes)*100
+        console.log(percent);
+    },(error)=>setUploadError(error.message),()=>{    
+        storage.ref('product-images').child(image.name).getDownloadURL().then(url=>{
+            fs.collection('Products').add({
+                name,
+                description,
+                quantity: Number(quantity),
+                price: Number(price),
+                url,
+            }).then(()=>{
+                setSuccessMsg('Product added successfully');
+                setTitle('');
+                setDescription('');
+                setPrice('');
+                document.getElementById('file').value='';
+                setImageError('');
+                setUploadError('');
+                setTimeout(()=>{	
+                    setSuccessMsg('');
+                },3000)
+            }).catch(error=>setUploadError(error.message));
+        })
+    })
+}
